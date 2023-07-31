@@ -20,8 +20,7 @@ client.on('messageCreate', async message => {
 
     if (message.content === '!youtube') {
         message.channel.send('Youtube!');
-
-        let url = `GET https://www.googleapis.com/youtube/v3/search`
+        let url = `https://www.googleapis.com/youtube/v3/search?key=${KEY}a=${searchText}&type=video`
         let response = await fetch(url);
         let json = await response.json();
         console.log(json);
