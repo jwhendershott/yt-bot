@@ -27,12 +27,17 @@ client.on('messageCreate', async message => {
             .setDescription("Query:")
             .setTitle("YT-BOT Search")
         // let embedMsg = await message.channel.send(embed);
-        let searchText = message.content.split(' ')[1];
+        let searchText = message.content.split(' ');
+        let shiftedText = searchText.shift();
+        let joinedText = searchText.join(' ');
         console.log(process.env.KEY);
-        let url = `https://www.googleapis.com/youtube/v3/search?key=${process.env.KEY}&q=${searchText}&type=video`
+        let url = `https://www.googleapis.com/youtube/v3/search?key=${process.env.KEY}&q=${joinedText}&type=video`
         let response = await fetch(url);
         let json = await response.json();
         console.log(json.items[0].id.videoId);
+        console.log(searchText);
+        console.log(shiftedText);
+        console.log(joinedText);
         let embedMsg = await message.channel.send(`https://www.youtube.com/watch?v=${json.items[0].id.videoId}`);
     }
 });
