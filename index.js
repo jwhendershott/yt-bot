@@ -20,13 +20,6 @@ client.on('messageCreate', async message => {
 
     if (message.content.toLowerCase().includes('!youtube')) {
         await message.channel.send('Youtube!');
-        let filter = m => m.author.id === message.author.id;
-        let collector = message.channel.createMessageCollector(filter, { max: 1}); //not set up yet
-        let embed = new EmbedBuilder()
-            .setColor("#73ffdc")
-            .setDescription("Query:")
-            .setTitle("YT-BOT Search")
-        // let embedMsg = await message.channel.send(embed);
         let searchText = message.content.split(' ');
         let shiftedText = searchText.shift();
         let joinedText = searchText.join(' ');
