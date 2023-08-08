@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, EmbedBuilder} = require('discord.js');
+const { Client, GatewayIntentBits} = require('discord.js');
 require('dotenv/config');
 
 const client = new Client({
@@ -31,7 +31,7 @@ client.on('messageCreate', async message => {
         console.log(searchText);
         console.log(shiftedText);
         console.log(joinedText);
-        let embedMsg = await message.channel.send(`https://www.youtube.com/watch?v=${json.items[0].id.videoId}`);
+        await message.channel.send(`https://www.youtube.com/watch?v=${json.items[0].id.videoId}`);
     }
 });
 
